@@ -18,6 +18,13 @@ namespace FarmBot
 
         public static void Initialize(MyObjectBuilder_Checkpoint.ModItem mod)
         {
+
+            if (MyAPIGateway.Utilities.IsDedicated)
+            {
+                MyLog.Default.WriteLineAndConsole($"[FarmBot] Skipping localization for dedicated server.");
+                return;
+            }
+            
             modItem = mod;
             currentLanguage = MyAPIGateway.Session.Config.Language;
             MyLog.Default.WriteLineAndConsole($"[FarmBot] Detected Game Language: {currentLanguage}");
