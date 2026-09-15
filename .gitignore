@@ -1,0 +1,8 @@
+bin/
+obj/
+*.dll
+*.pdb
+*.log
+*.sh
+farmbot.md
+*.csproj
