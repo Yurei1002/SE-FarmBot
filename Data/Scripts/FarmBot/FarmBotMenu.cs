@@ -232,10 +232,7 @@ namespace FarmBot
                 value = 0;
             }
 
-            return "Feld " +
-                   (index + 1) +
-                   " -> " +
-                   CropName(value);
+            return GetPlotName(entityId) + CropName(value);
         }
 
         private static string CropName(
@@ -314,6 +311,17 @@ namespace FarmBot
                         menuPlotIds[i]
                     );
             }
+        }
+
+        private string GetPlotName(long entityId)
+        {
+            foreach (FarmPlot plot in currentPlots)
+            {
+                if (plot.EntityID == entityId)
+                    return plot.CustomName;
+
+            }
+            return "Unknown";
         }
 
         public void SetNetworking(

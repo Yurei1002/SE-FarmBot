@@ -9,5 +9,6 @@ namespace FarmBot
     public long EntityID;
     public long GridID;
     public string GridName;
+    public string CustomName;
     }
 }

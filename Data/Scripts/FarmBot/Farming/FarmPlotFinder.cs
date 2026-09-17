@@ -50,6 +50,11 @@ namespace FarmBot
                     farmPlot.GridID = grid.EntityId;
                     farmPlot.GridName = grid.CustomName;
 
+                    IMyTerminalBlock terminalBlock = block as IMyTerminalBlock;
+
+                    if(terminalBlock != null)
+                        farmPlot.CustomName = terminalBlock.CustomName;
+
                     //MyLog.Default.WriteLineAndConsole($"[FarmBot] Es wurde ein Farmplot mit folgenden Daten gefunden: ID: {farmPlot.EntityID}, Grid ID: {farmPlot.GridID}, Grid: {farmPlot.GridName}");
 
                     farmPlots.Add(farmPlot);
