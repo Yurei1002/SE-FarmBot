@@ -110,12 +110,12 @@ namespace FarmBot
                 Localization.Get("menu.settings")
             );
 
-            automaticItem = new HudAPIv2.MenuItem(
+            /*automaticItem = new HudAPIv2.MenuItem(
                 Localization.Get("automatic_planting") + ": " +
                 (automaticPlanting ? Localization.Get("enabled") : Localization.Get("disabled")),
                 rootMenu,
                 ToggleAutomaticPlanting
-            );
+            );*/
 
             Dictionary<long, List<FarmPlot>> groupedPlots =
                 GroupPlotsByGrid(plots);
