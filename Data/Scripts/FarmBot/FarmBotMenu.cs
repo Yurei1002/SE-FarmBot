@@ -64,8 +64,8 @@ namespace FarmBot
             automaticPlanting = !automaticPlanting;
 
             automaticItem.Text =
-                "Automatic Planting: " +
-                (automaticPlanting ? "On" : "Off");
+                Localization.Get("automatic_planting") + ": " +
+                (automaticPlanting ? Localization.Get("enabled") : Localization.Get("disabled"));
 
             //MyLog.Default.WriteLineAndConsole($"[FarmBot] Automatic Planting: {(automaticPlanting ? "On" : "Off")}");
         }
@@ -105,14 +105,14 @@ namespace FarmBot
                 return;
 
             rootMenu = new HudAPIv2.MenuRootCategory(
-                "FarmBot",
+                Localization.Get("menu.title"),
                 HudAPIv2.MenuRootCategory.MenuFlag.AdminMenu,
-                "FarmBot Settings"
+                Localization.Get("menu.settings")
             );
 
             automaticItem = new HudAPIv2.MenuItem(
-                "Automatic Planting: " +
-                (automaticPlanting ? "ON" : "OFF"),
+                Localization.Get("automatic_planting") + ": " +
+                (automaticPlanting ? Localization.Get("enabled") : Localization.Get("disabled")),
                 rootMenu,
                 ToggleAutomaticPlanting
             );
@@ -241,19 +241,19 @@ namespace FarmBot
             switch (value)
             {
                 case 1:
-                    return "Grain";
+                    return Localization.Get("crop.grain");
 
                 case 2:
-                    return "Vegetable";
+                    return Localization.Get("crop.vegetable");
 
                 case 3:
-                    return "Mushrooms";
+                    return Localization.Get("crop.mushroom");
 
                 case 4:
-                    return "Fruit";
+                    return Localization.Get("crop.fruit");
 
                 default:
-                    return "Disabled";
+                    return Localization.Get("crop.disabled");
             }
         }
 
@@ -321,7 +321,7 @@ namespace FarmBot
                     return plot.CustomName;
 
             }
-            return "Unknown";
+            return Localization.Get("unknown");
         }
 
         public void SetNetworking(
