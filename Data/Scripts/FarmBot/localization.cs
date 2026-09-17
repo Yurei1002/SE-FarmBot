@@ -18,7 +18,6 @@ namespace FarmBot
 
         public static void Initialize(MyObjectBuilder_Checkpoint.ModItem mod)
         {
-
             if (MyAPIGateway.Utilities.IsDedicated)
             {
                 MyLog.Default.WriteLineAndConsole($"[FarmBot] Skipping localization for dedicated server.");
@@ -30,7 +29,7 @@ namespace FarmBot
             MyLog.Default.WriteLineAndConsole($"[FarmBot] Detected Game Language: {currentLanguage}");
 
             string languageFile = GetLanguageFile();
-            LoadLanguageFile(languageFile);
+            
             MyLog.Default.WriteLineAndConsole($"[FarmBot] Localization file: {languageFile}");
             MyLog.Default.WriteLineAndConsole($"[FarmBot] Loaded localization entries: {translations.Count}");
         }
@@ -38,7 +37,12 @@ namespace FarmBot
         private static string GetLanguageFile()
         {
             if (currentLanguage == MyLanguagesEnum.English)
+            {
+                LoadEnglishFile();
+                translations = englishTranslations;
+            
                 return "Data/Localization/english.json";
+            }
             
             string language = currentLanguage.ToString().ToLower();
             string file = "Data/Localization/" + language + ".json";
@@ -51,6 +55,7 @@ namespace FarmBot
             }
 
             LoadEnglishFile();
+            translations = englishTranslations;
             return "Data/Localization/english.json";
         }
 
@@ -79,6 +84,7 @@ namespace FarmBot
 
             string json = reader.ReadToEnd();
             reader.Dispose();
+
             englishTranslations = Parser.JsonParser(json);
         }
 
@@ -89,6 +95,10 @@ namespace FarmBot
             if (translations.TryGetValue(key, out value))
                 return value;
 
+            if (englishTranslations.TryGetValue(key, out value))
+                return value;
+
+            MyLog.Default.WriteLineAndConsole($"[FarmBot] Missing localization key: {key}");
             return key;
         }
     }
