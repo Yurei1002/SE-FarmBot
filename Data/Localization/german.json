@@ -1,3 +1,13 @@
 {
-    "test.hello": "Hallo Welt!"
+    "menu.title": "FarmBot Menü",
+    "menu.settings": "FarmBot Einstellungen",
+    "automatic_planting": "Automatisches Pflanzen",
+    "enabled": "An",
+    "disabled": "Aus",
+    "crop.grain": "Getreide",
+    "crop.vegetable": "Gemüse",
+    "crop.fruit": "Früchte",
+    "crop.mushroom": "Pilz",
+    "crop.disabled": "Deaktiviert",
+    "unknown": "Unbekannt"
 }
