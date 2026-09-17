@@ -8,7 +8,7 @@ namespace FarmBot
 {
     public class Networking
     {
-        private const ushort NetworkId = 12345;
+        private const ushort NetworkId = 49996;
 
         private const byte MessageRequestFarmPlots = 1;
         private const byte MessageFarmPlotsResponse = 2;
@@ -58,14 +58,9 @@ namespace FarmBot
             if (crop < 0 || crop > 4)
                 return;
 
-            if (MyAPIGateway.Multiplayer == null ||
-                MyAPIGateway.Multiplayer.IsServer)
+            if (MyAPIGateway.Multiplayer == null || MyAPIGateway.Multiplayer.IsServer)
             {
-                SetServerCropSelection(
-                    farmPlotId,
-                    crop
-                );
-
+                SetServerCropSelection(farmPlotId, crop);
                 return;
             }
 
@@ -292,20 +287,13 @@ namespace FarmBot
 
             foreach (FarmPlot farmPlot in farmPlots)
             {
-                AddLong(
-                    data,
-                    farmPlot.EntityID
-                );
+                AddLong(data, farmPlot.EntityID);
 
-                AddLong(
-                    data,
-                    farmPlot.GridID
-                );
+                AddLong(data, farmPlot.GridID);
 
-                AddString(
-                    data,
-                    farmPlot.GridName ?? ""
-                );
+                AddString(data, farmPlot.GridName ?? "");
+
+                AddString(data, farmPlot.CustomName);
 
                 int crop = 0;
 
