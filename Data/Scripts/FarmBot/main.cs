@@ -15,6 +15,7 @@ namespace FarmBot
         private FarmBotMenu farmBotMenu;
         private Networking networking;
         private FarmingManager farmingManager;
+        private Persistence persistence;
 
         private int farmingTimer = 0;
 
@@ -24,16 +25,21 @@ namespace FarmBot
 
             Localization.Initialize(ModContext.ModItem);
 
+            persistence = new Persistence();
+            persistence.Load();
+
             farmPlotManager = new FarmPlotManager();
             farmBotMenu = new FarmBotMenu(farmPlotManager);
             networking = new Networking(farmPlotManager);
             farmingManager = new FarmingManager();
+
 
             networking.SetFarmPlotReceiver(
                 farmBotMenu.ApplyServerState
             );
 
             farmBotMenu.SetNetworking(networking);
+
         }
 
         public override void UpdateBeforeSimulation()
