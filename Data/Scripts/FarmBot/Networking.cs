@@ -375,6 +375,12 @@ namespace FarmBot
                 farmPlot.GridName =
                     gridName;
 
+                string customName;
+                if (!ReadString(data, ref position, out customName))
+                    return;
+
+                farmPlot.CustomName = customName;
+
                 if (position + 4 > data.Length)
                     return;
 
