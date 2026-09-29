@@ -94,6 +94,7 @@ namespace FarmBot
             ulong sender,
             bool fromServer)
         {
+            MyLog.Default.WriteLineAndConsole($"[FarmBot] Network message received. Channel: {channel}, Sender: {sender}, FromServer: {fromServer}, Length: {(data == null ? 0 : data.Length)}");
             if (data == null || data.Length == 0)
                 return;
 
@@ -315,6 +316,7 @@ namespace FarmBot
             byte messageType,
             byte[] data)
         {
+            MyLog.Default.WriteLineAndConsole($"[FarmBot] Handling client message. Type: {messageType}");
             if (messageType != MessageFarmPlotsResponse)
                 return;
 
