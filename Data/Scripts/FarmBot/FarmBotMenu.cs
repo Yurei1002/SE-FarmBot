@@ -317,6 +317,7 @@ namespace FarmBot
         {
             foreach (FarmPlot plot in currentPlots)
             {
+                //MyLog.Default.WriteLineAndConsole($"[FarmBot] GetPlotName: EntityID={entityId}, CustomName={plot.CustomName}");
                 if (plot.EntityID == entityId)
                     return plot.CustomName;
 
