@@ -20,15 +20,16 @@ namespace FarmBot
 
         public FarmBotData Load()
         {
-            string data;
+            FarmBotData data;
 
             if (!MyAPIGateway.Utilities.GetVariable(StorageKey, out data))
             {
                 MyLog.Default.WriteLineAndConsole($"[FarmBot] No data found.");
                 return null;
             }
+            
             MyLog.Default.WriteLineAndConsole($"[FarmBot] Data loaded.");
-            return null;
+            return data;
         }
 
         public void Save(FarmBotData data)
