@@ -316,7 +316,7 @@ namespace FarmBot
             byte messageType,
             byte[] data)
         {
-            MyLog.Default.WriteLineAndConsole($"[FarmBot] Handling client message. Type: {messageType}");
+            //MyLog.Default.WriteLineAndConsole($"[FarmBot] Handling client message. Type: {messageType}");
             if (messageType != MessageFarmPlotsResponse)
                 return;
 
@@ -403,7 +403,7 @@ namespace FarmBot
                 ] = crop;
             }
 
-            MyLog.Default.WriteLineAndConsole($"[FarmBot] FarmPlot state received from server. Count: {farmPlots.Count}");
+            //MyLog.Default.WriteLineAndConsole($"[FarmBot] FarmPlot state received from server. Count: {farmPlots.Count}");
 
             if (farmPlotReceiver != null)
             {
@@ -437,7 +437,7 @@ namespace FarmBot
                 );
             }
 
-            MyLog.Default.WriteLineAndConsole($"[FarmBot] Networking unregistered.");
+            //MyLog.Default.WriteLineAndConsole($"[FarmBot] Networking unregistered.");
         }
 
         private static void WriteLong(
